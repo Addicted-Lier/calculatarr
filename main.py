@@ -1,4 +1,5 @@
 
+import re
 while True:
     kuit = input("enter 'q' to quit the calculator or press any other key to continue : ")
     
@@ -9,24 +10,35 @@ while True:
         break
     
 
-    op = input("Enter what you wish to do +,-,*,/ :  ")
-    a = int(input("enter the first number for operation : "))
-    b = int(input("enter the second number for operation : "))
+    op = input("write the full operation to perform : ")
+    parts = re.split(r'([-/*%+])', op) # be wary of regex expression 
 
-    if op == "+":
-        ans = a+b
+    converted = []
+
+    for item in parts:
+        if item.isdigit() :
+            number = int(item)
+            converted.append(number)
+        else:
+            converted.append(item)
+
+
+    # for items in converted:
+    #     print(items)
+    if converted[1] == '+':
+        ans = converted[0]+converted[2]
         print (ans)
-    elif op =="-":
-        ans = a-b
+    elif converted[1] =="-":
+        ans = converted[0]-converted[2]
         print(ans)
-    elif op =="*":
-        ans = a*b
+    elif converted[1] =="*":
+        ans = converted[0]*converted[2]
         print(ans)
-    elif op =="/":
-        ans = a/b
+    elif converted[1] =="/":
+        ans = converted[0]/converted[2]
         print(ans)
-    elif op =="%":
-        ans = a%b
+    elif converted[1] =="%":
+        ans = converted[0]%converted[2]
         print(ans)
     
    

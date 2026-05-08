@@ -23,15 +23,8 @@ while True:
             converted.append(item)
     i = 0
     while i < (len(converted)):
-        if converted[i] == "*" :
-            num1 = converted[i-1]
-            num2 = converted[i+1]
-            result = num1*num2
-            converted[i-1 : i+2] = [result]
-            i=0
-            continue
 
-        elif converted[i] == "/" :
+        if converted[i] == "/" :
             num1 = converted[i-1]
             num2 = converted[i+1]
             if num2 !=0:
@@ -41,6 +34,30 @@ while True:
                 print("dividing a number with 0 = nada \n exiting the calculator")
                 break
             converted[i-1 : i+2] = [result]
+            i=0
+            continue
+        elif converted[i] == "*" :
+            num1 = converted[i-1]
+            num2 = converted[i+1]
+            result = num1*num2
+            converted[i-1 : i+2] = [result]
+            i=0
+            continue
+
+
+        elif converted[i] == "+":
+            num1 = converted[i-1]
+            num2 = converted[i+1]
+            result = num1 + num2
+            converted[i-1:i+1] = [result]
+            i=0
+            continue
+            
+        elif converted[i] == "-":
+            num1 = converted[i-1]
+            num2 = converted[i+1]
+            result = num1 - num2
+            converted[i-1:i+1] = [result]
             i=0
             continue
         i+=1
